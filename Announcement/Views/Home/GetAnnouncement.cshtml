@@ -1,0 +1,32 @@
+﻿@using Entities
+@model Entities.Announcement
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "_Layout";
+}
+
+<h2 align="center">@Model.Title</h2>
+
+<h4>Description: @Model.Description</h4>
+
+<h4>Date: @Model.AddedDate</h4>
+
+<br/><div>Similar Announcements: </div><br/>
+<table class="table"> 
+    <tr>
+        <th>№</th>
+        <th>Title</th>
+    </tr>
+    @for (var i = 0; i < new List<Announcement>(ViewBag.SimilarAnnouncements).Count; i++)
+    {
+        <tr>
+            <td>
+                @(i + 1))
+            </td>
+            <td>
+                <a asp-action="GetAnnouncement" asp-controller="Home" asp-route-id="@ViewBag.SimilarAnnouncements[i].Id">@ViewBag.SimilarAnnouncements[i].Title</a>
+            </td>
+        </tr>
+    }
+</table>
+

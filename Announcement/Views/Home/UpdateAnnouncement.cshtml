@@ -1,0 +1,15 @@
+﻿@model Entities.Announcement
+@{
+    ViewBag.Title = "Update";
+    Layout = "_Layout";
+}
+
+<form asp-action="UpdateAnnouncement" asp-controller="Home">
+    <label asp-for="Title" title="@Model.Title">Title: </label>
+    <input asp-for="Title"><br/>
+    <label asp-for="Description">Description: </label>
+    <input asp-for="Description"><br/>
+    <label asp-for="AddedDate">Added date: </label>
+    <input asp-for="AddedDate"><br/>
+    <input type="submit" value="Save">
+</form>

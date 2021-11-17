@@ -1,0 +1,31 @@
+﻿@model List<Entities.Announcement>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<a asp-action="NewAnnouncement" asp-controller="Home">Add Announcement</a><br/><br/>
+
+<div>Announcements: </div><br/>
+<table class="table"> 
+    <tr>
+        <th>№</th>
+        <th>Title</th>
+    </tr>
+    @for (var i = 0; i < @Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @(i + 1))
+            </td>
+            <td>
+                <a asp-action="GetAnnouncement" asp-controller="Home" asp-route-id="@Model[i].Id">@Model[i].Title</a>
+            </td>
+            <td>
+                <a asp-action="UpdateAnnouncement" asp-controller="Home" asp-route-id="@Model[i].Id">Update</a>
+            </td>
+            <td>
+                <a asp-action="DeleteAnnouncement" asp-controller="Home" asp-route-id="@Model[i].Id">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
